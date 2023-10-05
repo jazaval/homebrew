@@ -59,9 +59,7 @@ module Homebrew
 
   def owner
     @owner ||= begin
-      # once we only support 14.0 we can switch this to find_homebrew_username
-      require 'etc'
-      ::Etc.getpwuid(HomebrewUserWrapper.new.find_homebrew_uid).name
+      HomebrewUserWrapper.new.find_homebrew_username
                rescue Chef::Exceptions::CannotDetermineHomebrewOwner
                  calculate_owner
     end.tap do |owner|
