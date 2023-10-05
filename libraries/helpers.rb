@@ -21,7 +21,9 @@
 
 class HomebrewUserWrapper
   require 'chef/mixin/homebrew_user'
+  require 'chef-utils/dsl/which'
   include Chef::Mixin::HomebrewUser
+  include ChefUtils::DSL::Which
 end
 
 module Homebrew
